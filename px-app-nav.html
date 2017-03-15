@@ -61,10 +61,23 @@ Custom property | Description | Default
               <span class="u-ml--">{{navitem.label}}</span>
               <px-tooltip for$="nav-item-{{index}}" orientation="right" tooltip-message="{{navitem.label}}" hidden$="{{_navExpanded}}"></px-tooltip>
             </a>
-            <ul class$="{{navitem.subitemlistclass}}">
+            <ul class$="{{navitem.subitemlistclass}} secondary-nav">
               <template is="dom-repeat" items="{{navitem.subitems}}">
                 <li>
-                  <a href$="{{item.href}}" class$="{{item.class}}" event-name$="{{item.eventName}}" on-click="subnavClickHandler"><span class$="{{navitem.subitemclass}}">{{item.label}}</span></a>
+                  <a href$="{{item.href}}" class$="{{item.class}}" event-name$="{{item.eventName}}" on-click="subnavClickHandler">
+                    <iron-icon class="u-mr-- nav-item--icon" icon$="fa:{{item.icon}}" id$="nav-item-{{index}}"></iron-icon>
+                    <span class$="{{navitem.subitemclass}}">{{item.label}}</span>
+                  </a>
+                  <ul class$="{{navitem.subitemlistclass}} tertiary-nav">
+                    <template is="dom-repeat" items="{{item.subitems}}">
+                      <li>
+                        <a href$="{{item.href}}" class$="{{item.class}}" event-name$="{{item.eventName}}" on-click="subnavClickHandler">
+                          <span>{{item.label}}</span>
+                        </a>
+                      </li>
+                    </template>
+                  </ul>
+
                 </li>
               </template>
             </ul>
@@ -649,6 +662,7 @@ Custom property | Description | Default
       } else {
         this.set('navExpanded','true');
       }
+
     },
 
     /**
