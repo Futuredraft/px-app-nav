@@ -55,7 +55,7 @@ Custom property | Description | Default
       </button>
       <ul id="navitemlist" class="navbar__item list-bare">
         <template is="dom-repeat" items="{{navItems}}" as="navitem">
-          <li>
+          <li class$="{{navitem.addclass}}">
             <a class$="{{navitem.class}}" href$="{{navitem.href}}" event-name$="{{navitem.eventName}}" on-click="navClickHandler" target$="_is NewTarget(item  )">
               <iron-icon class="u-mr-- nav-item--icon" icon$="fa:{{navitem.icon}}" id$="nav-item-{{index}}"></iron-icon>
               <span class="u-ml--">{{navitem.label}}</span>
@@ -63,7 +63,7 @@ Custom property | Description | Default
             </a>
             <ul class$="{{navitem.subitemlistclass}} secondary-nav">
               <template is="dom-repeat" items="{{navitem.subitems}}">
-                <li>
+                <li class$="{{item.addclass}}">
                   <a href$="{{item.href}}" class$="{{item.class}}" event-name$="{{item.eventName}}" on-click="subnavClickHandler">
                     <iron-icon class="u-mr-- nav-item--icon" icon$="fa:{{item.icon}}" id$="nav-item-{{index}}"></iron-icon>
                     <span class$="{{navitem.subitemclass}}">{{item.label}}</span>
